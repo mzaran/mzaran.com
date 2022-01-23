@@ -130,3 +130,10 @@ dmypy.json
 
 # Sonarqube dir
 .scannerwork
+settings.json
+app/static/node_modules/*
+package-lock.json
+package.json
+app/static/src/input.css
+app/static/tailwind.config.js
+app/static/postcss.config.js
