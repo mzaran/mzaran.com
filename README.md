@@ -1,2 +1,3 @@
 # www.mzaran.com
-Personal page hosted on RackNerdVPS
+
+Temporary page for www.mzaran.com
