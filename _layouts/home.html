@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="home">
+  <div class="prompt">{{ site.author }}@mzaran.com:~$ ls -lt _posts/</div>
+
+  {% if site.posts.size == 0 %}
+    <p class="dim">No posts yet.</p>
+  {% else %}
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-item">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <div class="post-meta">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.description %}<p class="post-excerpt">{{ post.description }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
