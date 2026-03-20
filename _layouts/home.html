@@ -9,11 +9,11 @@ layout: default
   {% else %}
   <ul class="post-list">
     {% for post in site.posts %}
-    <li class="post-item">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-      <div class="post-meta">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {% if post.description %}<p class="post-excerpt">{{ post.description }}</p>{% endif %}
+    <li class="post-card">
+      <div class="post-card-inner">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <a href="{{ post.url | relative_url }}" class="post-card-title">{{ post.title }}</a>
+        {% if post.description %}<p class="post-card-excerpt">{{ post.description }}</p>{% endif %}
       </div>
     </li>
     {% endfor %}
