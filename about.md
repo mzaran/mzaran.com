@@ -3,7 +3,7 @@ layout: default
 title: about
 ---
 
-<div class="prompt">{{ site.author }}@mzaran.com:~$ cat about.md</div>
+<div class="prompt">user@mzaran.com:~$ cat about.md</div>
 
 ## About
 
