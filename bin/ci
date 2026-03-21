@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Ensure act is installed
+if ! command -v act &>/dev/null; then
+  echo "Error: 'act' is not installed."
+  echo "Install with: sudo dnf install act"
+  echo "Or download from: https://github.com/nektos/act/releases"
+  exit 1
+fi
+
+# Ensure Podman socket is active (act needs a Docker-compatible socket)
+systemctl --user start podman.socket 2>/dev/null || true
+
+PODMAN_SOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock"
+export DOCKER_HOST="unix://$PODMAN_SOCK"
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+echo "Running GitHub Actions workflow locally via act..."
+echo "Note: The deploy step will fail (no GitHub token) — this is expected."
+echo ""
+
+exec act push \
+  --container-architecture linux/amd64 \
+  --directory "$REPO_ROOT"

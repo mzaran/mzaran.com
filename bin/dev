@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+IMAGE_NAME="mzaran-dev"
+CONTAINER_NAME="mzaran-dev"
+
+# Remove stopped container if it exists
+if podman container exists "$CONTAINER_NAME" 2>/dev/null; then
+  STATUS=$(podman inspect --format '{{.State.Status}}' "$CONTAINER_NAME")
+  if [ "$STATUS" != "running" ]; then
+    podman rm "$CONTAINER_NAME" >/dev/null
+  else
+    echo "Dev server is already running at http://localhost:4000"
+    echo "Stop it with: podman stop $CONTAINER_NAME"
+    exit 0
+  fi
+fi
+
+# Build image if needed or --build flag passed
+BUILD=false
+if [[ "${1:-}" == "--build" ]] || ! podman image exists "$IMAGE_NAME" 2>/dev/null; then
+  BUILD=true
+fi
+
+if $BUILD; then
+  echo "Building $IMAGE_NAME..."
+  podman build -t "$IMAGE_NAME" "$REPO_ROOT"
+fi
+
+podman run \
+  --name "$CONTAINER_NAME" \
+  --rm \
+  -d \
+  -v "$REPO_ROOT:/site:Z" \
+  -p 4000:4000 \
+  -p 35729:35729 \
+  "$IMAGE_NAME" >/dev/null
+
+echo "Running at http://localhost:4000"
+echo "Stop with: podman stop $CONTAINER_NAME"
+echo ""
+echo "Logs: podman logs -f $CONTAINER_NAME"

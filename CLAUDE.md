@@ -9,6 +9,13 @@ A Jekyll static site/blog for `mzaran.com`, hosted on GitHub Pages. Custom layou
 ## Commands
 
 ```bash
+# Containerized dev (Podman)
+./bin/dev          # Build image if needed, start dev server at localhost:4000
+./bin/dev --build  # Force rebuild container (after Gemfile changes)
+./bin/ci           # Run GitHub Actions workflow locally via act (requires act)
+podman stop mzaran-dev  # Stop dev server
+
+# Or run natively (requires Ruby 3.4 + bundler)
 bundle install              # install dependencies
 bundle exec jekyll serve    # serve locally at localhost:4000
 bundle exec jekyll build    # build to _site/
