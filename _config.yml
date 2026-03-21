@@ -11,6 +11,6 @@ plugins:
   - jekyll-feed
 
 highlighter: rouge
-exclude: [preview.html]
+
 kramdown:
   syntax_highlighter: rouge

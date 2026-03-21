@@ -155,36 +155,6 @@ main {
   line-height: 1.6;
 }
 
-/* Keep legacy .post-item for post pages (prev/next nav etc.) */
-.post-item {
-  display: grid;
-  grid-template-columns: 11ch 1fr;
-  gap: 0 1.5rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px dashed var(--border);
-  align-items: baseline;
-}
-
-.post-item time {
-  color: var(--ink-dim);
-  font-size: 0.825rem;
-  white-space: nowrap;
-}
-
-.post-item a {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.post-item a:hover { text-decoration: underline; }
-
-.post-excerpt {
-  grid-column: 2;
-  color: var(--ink-dim);
-  font-size: 0.825rem;
-  margin: 0.2rem 0 0;
-}
 
 .post-header {
   margin-bottom: 2.5rem;
