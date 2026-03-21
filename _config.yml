@@ -14,3 +14,13 @@ highlighter: rouge
 
 kramdown:
   syntax_highlighter: rouge
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - Containerfile
+  - .containerignore
+  - bin
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock

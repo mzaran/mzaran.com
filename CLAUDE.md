@@ -23,13 +23,18 @@ bundle exec jekyll build    # build to _site/
 
 ## Structure
 
-- `_config.yml` — site settings (title, author, URL, plugins)
+- `_config.yml` — site settings (title, author, URL, plugins, exclude list)
 - `_layouts/` — custom layouts: `default.html`, `home.html`, `post.html`
 - `assets/css/style.scss` — all styles (front matter required for Jekyll SCSS processing)
 - `assets/js/scroll.js` — header hide/show on scroll direction
 - `_posts/` — blog posts, named `YYYY-MM-DD-slug.md` with `layout: post`
 - `index.md` — home page (`layout: home`, lists all posts)
 - `about.md` — about page (`layout: default`)
+- `Containerfile` — Podman image: Ruby 3.4-slim, bundled gems (rootless Podman provides host-user isolation)
+- `.containerignore` — excludes build artifacts and meta files from image context
+- `bin/dev` — start/rebuild the Podman dev container
+- `bin/ci` — run GitHub Actions workflow locally via `act`
+- `.github/workflows/jekyll-gh-pages.yml` — CI/CD: builds and deploys to GitHub Pages on push to `main`
 
 ## Writing posts
 

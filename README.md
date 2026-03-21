@@ -6,13 +6,26 @@ Dark terminal aesthetic with a card-grid layout, IBM Plex Mono typography, and s
 
 ## Local development
 
+Requires [Podman](https://podman.io) (installed by default on Fedora):
+
 ```bash
-bundle install              # install dependencies
-bundle exec jekyll serve    # serve at localhost:4000
-bundle exec jekyll build    # build to _site/
+./bin/dev          # build image if needed, serve at localhost:4000
+./bin/dev --build  # force rebuild (after Gemfile changes)
+podman stop mzaran-dev  # stop dev server
 ```
 
-Requires Ruby 3.4+ and Bundler.
+To validate CI locally before pushing (requires [act](https://github.com/nektos/act)):
+
+```bash
+./bin/ci
+```
+
+Or natively with Ruby 3.4+ and Bundler:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
 ## Writing posts
 

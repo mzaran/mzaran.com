@@ -32,6 +32,7 @@ podman run \
   --name "$CONTAINER_NAME" \
   --rm \
   -d \
+  --userns=keep-id \
   -v "$REPO_ROOT:/site:Z" \
   -p 4000:4000 \
   -p 35729:35729 \

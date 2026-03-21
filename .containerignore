@@ -3,3 +3,7 @@ _site/
 .sass-cache/
 vendor/
 .git/
+CLAUDE.md
+README.md
+LICENSE
+CNAME
