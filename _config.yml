@@ -5,6 +5,7 @@ description: Notes on projects, systems, and engineering.
 baseurl: ""
 url: "https://mzaran.com"
 github_username: mzaran
+license: GPL-3.0-only
 
 # Build settings
 plugins:

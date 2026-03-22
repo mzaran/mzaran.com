@@ -30,6 +30,7 @@
   <footer class="site-footer">
     <div class="container">
       <span>{{ site.author }} &mdash; <a href="mailto:{{ site.email }}">{{ site.email }}</a></span>
+      <span>&copy; {{ site.time | date: '%Y' }} {{ site.author }} &mdash; <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a></span>
       <a href="{{ '/feed.xml' | relative_url }}">rss</a>
     </div>
   </footer>

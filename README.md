@@ -44,3 +44,7 @@ tags: [tag1, tag2]
 ## Deployment
 
 Pushes to `main` trigger the GitHub Actions workflow (`.github/workflows/jekyll-gh-pages.yml`), which builds and deploys to GitHub Pages at [mzaran.com](https://mzaran.com).
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
