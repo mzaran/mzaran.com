@@ -2,21 +2,28 @@
 layout: default
 ---
 <div class="home">
-  <div class="prompt">user@mzaran.com:~$ ls -lt _posts/</div>
+  <div class="prompt">user@mzaran.com:~$ tree _posts/</div>
 
   {% if site.posts.size == 0 %}
     <p class="dim">No posts yet.</p>
   {% else %}
-  <ul class="post-list">
+  <div class="tree">
+    <div class="tree-root">_posts/</div>
     {% for post in site.posts %}
-    <li class="post-card">
-      <div class="post-card-inner">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        <a href="{{ post.url | relative_url }}" class="post-card-title">{{ post.title }}</a>
-        {% if post.description %}<p class="post-card-excerpt">{{ post.description }}</p>{% endif %}
+    <div class="tree-entry">
+      <span class="tree-branch" aria-hidden="true">{% if forloop.last %}└── {% else %}├── {% endif %}</span><a href="{{ post.url | relative_url }}" class="tree-link"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>-{{ post.title | slugify }}.md</a>
+      {% if post.description %}
+      <div class="tree-desc">
+        <span class="tree-pipe" aria-hidden="true">{% if forloop.last %}    {% else %}│   {% endif %}</span>{{ post.description }}
       </div>
-    </li>
+      {% endif %}
+      {% unless forloop.last %}
+      <div class="tree-spacer">
+        <span class="tree-pipe" aria-hidden="true">│</span>
+      </div>
+      {% endunless %}
+    </div>
     {% endfor %}
-  </ul>
+  </div>
   {% endif %}
 </div>

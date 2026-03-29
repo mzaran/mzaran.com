@@ -2,17 +2,16 @@
 ---
 
 :root {
-  --paper:      #1a1d23;
-  --paper-dark: #22262e;
-  --ink:        #d4cfc4;
-  --ink-dim:    #8a8478;
-  --green:      #4ae04a;
-  --green-hi:   #6aff6a;
-  --code-bg:    #14161c;
-  --code-fg:    #5eff5e;
-  --border:     #333a40;
-  --card-border: #3a4048;
-  --max-w:      860px;
+  --paper:       #f4efe6;
+  --paper-dark:  #eae4d9;
+  --ink:         #2c2c2c;
+  --ink-dim:     #8a8378;
+  --accent:      #5a7a6a;
+  --accent-hi:   #3d6652;
+  --code-bg:     #e4ddd1;
+  --code-fg:     #2c2c2c;
+  --border:      #d1c9ba;
+  --max-w:       860px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -58,7 +57,7 @@ body {
 .site-title {
   font-weight: 600;
   font-size: 1rem;
-  color: var(--green);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -68,7 +67,7 @@ body {
   font-weight: 400;
 }
 
-.site-title:hover { color: var(--green-hi); }
+.site-title:hover { color: var(--accent-hi); }
 
 nav {
   display: flex;
@@ -82,7 +81,7 @@ nav a {
   font-size: 0.875rem;
 }
 
-nav a:hover { color: var(--green); }
+nav a:hover { color: var(--accent); }
 
 main {
   padding: 2.5rem 1.5rem 4rem;
@@ -98,61 +97,60 @@ main {
 
 .prompt::after {
   content: ' ▌';
-  color: var(--green);
+  color: var(--accent);
   animation: blink 1.1s step-end infinite;
 }
 
 @keyframes blink { 50% { opacity: 0; } }
 
-/* Card grid */
-.post-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+/* Tree listing */
+.tree {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 65ch;
 }
 
-.post-card {
-  background: var(--paper-dark);
-  border: 1px solid var(--card-border);
-  border-radius: 4px;
-  transition: border-color 0.15s ease;
+.tree-root {
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
-.post-card:hover {
-  border-color: var(--green);
-}
-
-.post-card-inner {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.post-card time {
-  color: var(--ink-dim);
-  font-size: 0.775rem;
+.tree-entry {
   white-space: nowrap;
 }
 
-.post-card-title {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  line-height: 1.4;
+.tree-branch,
+.tree-pipe {
+  color: var(--ink-dim);
+  user-select: none;
 }
 
-.post-card-title:hover { color: var(--green-hi); }
+.tree-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: normal;
+}
 
-.post-card-excerpt {
+.tree-link:hover {
+  color: var(--accent-hi);
+}
+
+.tree-link time {
+  font-weight: 400;
+}
+
+.tree-desc {
   color: var(--ink-dim);
-  font-size: 0.8rem;
-  margin: 0.1rem 0 0;
-  line-height: 1.6;
+  font-size: 0.825rem;
+  white-space: normal;
+}
+
+.tree-spacer {
+  color: var(--ink-dim);
+  line-height: 1.2;
+  user-select: none;
 }
 
 
@@ -204,8 +202,8 @@ main {
 .post-content h3::before { content: '### '; color: var(--ink-dim); font-weight: 400; }
 .post-content h4::before { content: '#### '; color: var(--ink-dim); font-weight: 400; }
 
-.post-content a { color: var(--green); }
-.post-content a:hover { color: var(--green-hi); }
+.post-content a { color: var(--accent); }
+.post-content a:hover { color: var(--accent-hi); }
 
 .post-content p { margin: 0 0 1.1rem; }
 
@@ -232,7 +230,7 @@ main {
   overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.65;
-  border-left: 3px solid var(--green);
+  border-left: 3px solid var(--accent);
   margin: 1.5rem 0;
 }
 
@@ -245,7 +243,7 @@ main {
 }
 
 .post-content blockquote {
-  border-left: 3px solid var(--green);
+  border-left: 3px solid var(--accent);
   margin: 1.5rem 0;
   padding: 0.25rem 0 0.25rem 1.5rem;
   color: var(--ink-dim);
@@ -291,7 +289,7 @@ main {
   font-size: 0.875rem;
 }
 
-.post-footer a:hover { color: var(--green); }
+.post-footer a:hover { color: var(--accent); }
 
 .site-footer {
   border-top: 1px solid var(--border);
@@ -312,15 +310,9 @@ main {
   text-decoration: none;
 }
 
-.site-footer a:hover { color: var(--green); }
+.site-footer a:hover { color: var(--accent); }
 
 .dim { color: var(--ink-dim); }
-
-@media (max-width: 640px) {
-  .post-list {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (max-width: 520px) {
   body { font-size: 14px; }
