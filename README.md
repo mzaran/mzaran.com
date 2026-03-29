@@ -2,7 +2,7 @@
 
 Personal site and blog, built with [Jekyll](https://jekyllrb.com) and hosted on [GitHub Pages](https://pages.github.com).
 
-Dark terminal aesthetic with a card-grid layout, IBM Plex Mono typography, and scroll-aware navigation.
+E-ink terminal aesthetic with a tree-style post listing, IBM Plex Mono typography, and scroll-aware navigation.
 
 ## Local development
 
@@ -36,7 +36,7 @@ Create `_posts/YYYY-MM-DD-title.md`:
 layout: post
 title: "Post Title"
 date: YYYY-MM-DD
-description: One-line summary shown on the home page card.
+description: One-line summary shown in the post tree listing.
 tags: [tag1, tag2]
 ---
 ```

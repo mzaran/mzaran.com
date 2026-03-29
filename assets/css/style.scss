@@ -6,8 +6,8 @@
   --paper-dark:  #eae4d9;
   --ink:         #2c2c2c;
   --ink-dim:     #8a8378;
-  --accent:      #5a7a6a;
-  --accent-hi:   #3d6652;
+  --accent:      #555555;
+  --accent-hi:   #2a2a2a;
   --code-bg:     #e4ddd1;
   --code-fg:     #2c2c2c;
   --border:      #d1c9ba;
@@ -84,7 +84,7 @@ nav a {
 nav a:hover { color: var(--accent); }
 
 main {
-  padding: 2.5rem 1.5rem 4rem;
+  padding: 2.5rem 0 4rem;
   min-height: calc(100vh - 140px);
 }
 
@@ -107,30 +107,53 @@ main {
 .tree {
   font-size: 0.9rem;
   line-height: 1.7;
-  max-width: 65ch;
 }
 
 .tree-root {
   color: var(--ink);
   font-weight: 600;
-  margin-bottom: 0.25rem;
+}
+
+.tree-entries {
+  border-left: 1px solid var(--ink-dim);
+  margin-left: 0.5ch;
+  padding-left: 0;
 }
 
 .tree-entry {
-  white-space: nowrap;
+  position: relative;
+  padding-left: 1.5em;
+  padding-bottom: 0.25em;
 }
 
-.tree-branch,
-.tree-pipe {
-  color: var(--ink-dim);
-  user-select: none;
+.tree-entry:last-child {
+  padding-bottom: 0;
+}
+
+.tree-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 1em;
+  border-bottom: 1px solid var(--ink-dim);
+}
+
+.tree-entries > .tree-entry:last-child {
+  border-left: 1px solid var(--paper);
+  margin-left: -1px;
+}
+
+.tree-entries > .tree-entry:last-child::before {
+  border-left: 1px solid var(--ink-dim);
+  height: 0.85em;
+  top: 0;
 }
 
 .tree-link {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  white-space: normal;
 }
 
 .tree-link:hover {
@@ -144,13 +167,6 @@ main {
 .tree-desc {
   color: var(--ink-dim);
   font-size: 0.825rem;
-  white-space: normal;
-}
-
-.tree-spacer {
-  color: var(--ink-dim);
-  line-height: 1.2;
-  user-select: none;
 }
 
 
@@ -184,10 +200,6 @@ main {
   border: 1px solid var(--border);
   padding: 0.05rem 0.45rem;
   font-size: 0.8rem;
-}
-
-.post-content {
-  max-width: 65ch;
 }
 
 .post-content h2,

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A Jekyll static site/blog for `mzaran.com`, hosted on GitHub Pages. Custom layouts with no third-party theme — dark terminal aesthetic (dark background, IBM Plex Mono font, bright green accents, card-grid home page, scroll-hiding header).
+A Jekyll static site/blog for `mzaran.com`, hosted on GitHub Pages. Custom layouts with no third-party theme — e-ink terminal aesthetic (warm paper background, IBM Plex Mono font, grayscale accents, tree-style home page, scroll-hiding header).
 
 ## Commands
 
@@ -53,9 +53,10 @@ tags: [tag1, tag2]
 ## Design notes
 
 - Colors defined as CSS variables in `style.scss` (`:root` block) — edit there to retheme
-- `--green` / `--green-hi` control all accent colors (bright terminal green)
-- `--paper: #1a1d23` / `--paper-dark: #22262e` control dark background tones
-- Home page uses a 2-column card grid (`.post-card`), falls back to single column at 640px
+- `--accent` / `--accent-hi` control all accent colors (grayscale)
+- `--paper: #f4efe6` / `--paper-dark: #eae4d9` control warm e-ink background tones
+- Home page uses a tree-style listing (CSS border-drawn lines, no card grid)
 - `scroll.js` hides header on scroll-down, shows on scroll-up (via `.header-hidden` class)
 - The blinking cursor after `.prompt` lines is a pure CSS animation
-- Code blocks: dark background (`--code-bg`) with green text (`--code-fg`), left border accent
+- Code blocks: warm tinted background (`--code-bg`) with dark text (`--code-fg`), left border accent
+- All pages share the same container width (`--max-w: 860px`) — no per-page max-width overrides

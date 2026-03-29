@@ -9,21 +9,16 @@ layout: default
   {% else %}
   <div class="tree">
     <div class="tree-root">_posts/</div>
-    {% for post in site.posts %}
-    <div class="tree-entry">
-      <span class="tree-branch" aria-hidden="true">{% if forloop.last %}└── {% else %}├── {% endif %}</span><a href="{{ post.url | relative_url }}" class="tree-link"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>-{{ post.title | slugify }}.md</a>
-      {% if post.description %}
-      <div class="tree-desc">
-        <span class="tree-pipe" aria-hidden="true">{% if forloop.last %}    {% else %}│   {% endif %}</span>{{ post.description }}
+    <div class="tree-entries">
+      {% for post in site.posts %}
+      <div class="tree-entry">
+        <a href="{{ post.url | relative_url }}" class="tree-link"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>-{{ post.title | slugify }}.md</a>
+        {% if post.description %}
+        <div class="tree-desc">{{ post.description }}</div>
+        {% endif %}
       </div>
-      {% endif %}
-      {% unless forloop.last %}
-      <div class="tree-spacer">
-        <span class="tree-pipe" aria-hidden="true">│</span>
-      </div>
-      {% endunless %}
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
   {% endif %}
 </div>
